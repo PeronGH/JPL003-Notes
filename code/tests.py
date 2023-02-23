@@ -1,4 +1,5 @@
 import adjectives
+from verbs import VerbGroup, PlainVerb
 
 
 def test_adj(word: str):
@@ -18,3 +19,20 @@ na_adjectives = ['きれいです', 'すきだ']
 
 for na_adjective in na_adjectives:
     test_adj(na_adjective)
+
+
+verbs = [
+    # Group 1
+    'ある', 'かう', 'かく',
+    # Group 2
+    'いる', 'おきる',
+    # Group 3
+    'する', 'くる',
+    # Practice
+    'あそぷ', 'のむ', 'わすれる', 'わくれる', 'しめ', 'べんきょうする', 'できる', 'くる', 'かえる',
+]
+
+for verb in verbs:
+    print(f'{verb} is in group {VerbGroup.from_verb(PlainVerb(verb)).value}')
+    print(f'Polite form: {PlainVerb(verb).to_polite().kana}')
+    print()
