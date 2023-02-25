@@ -16,8 +16,12 @@ export class AnkiConnect {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ action, version: 6, params }),
     });
-    const json = await response.json();
-    return json.result;
+    try {
+      const json = await response.json();
+      return json.result;
+    } catch {
+      return null;
+    }
   }
 
   deckNames(): Promise<string[]> {

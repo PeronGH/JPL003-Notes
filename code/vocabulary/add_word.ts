@@ -9,9 +9,7 @@ function getWords(topic: number) {
 
 function word2note(word: VocabularyWord) {
   return {
-    front: word.KANJI === word.KANA
-      ? word.KANJI
-      : `${word.KANJI} (${word.KANA})`,
+    front: `${word.KANJI} (${word.ROMAJI})`,
     back: word.UWRD,
   };
 }
@@ -22,16 +20,22 @@ async function addWords(topic: number) {
   const newWordsDeck = anki.deck("Marugoto::A2-2 New");
 
   const [oldWords, newWords] = await getWords(topic);
+  let counter = 0;
+
   for (const word of oldWords) {
-    await oldWordsDeck.addNote(word2note(word));
+    if (await (oldWordsDeck.addNote(word2note(word)))) counter += 1;
   }
+
   for (const word of newWords) {
-    await newWordsDeck.addNote(word2note(word));
+    if (await (newWordsDeck.addNote(word2note(word)))) counter += 1;
   }
+
+  return counter;
 }
 
 Deno.test("add words", async () => {
-  await addWords(1);
+  const result = await addWords(1);
+  console.log(result);
 });
 
 Deno.test("get words", async () => {
