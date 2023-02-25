@@ -1,5 +1,8 @@
 {
     "cSpell.words": [
+        "anki",
+        "apkg",
+        "CEFR",
         "Godan",
         "Ichidan",
         "imasu",
@@ -10,9 +13,15 @@
         "Marugoto",
         "masu",
         "nikui",
+        "RAWID",
         "Romaji",
+        "ROWDATA",
         "shimasu",
         "suru",
+        "ulevel",
+        "utext",
+        "UWRD",
         "yasui"
-    ]
+    ],
+    "deno.enable": true
 }
