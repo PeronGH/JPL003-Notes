@@ -9,7 +9,9 @@ function getWords(topic: number) {
 
 function word2note(word: VocabularyWord) {
   return {
-    front: `${word.KANJI} (${word.ROMAJI})`,
+    front: word.KANJI.includes(word.ROMAJI)
+      ? word.KANJI
+      : `${word.KANJI} (${word.ROMAJI})`,
     back: word.UWRD,
   };
 }
