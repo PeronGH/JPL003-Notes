@@ -36,7 +36,7 @@ async function addWords(topic: number) {
 }
 
 Deno.test("add words", async () => {
-  const result = await addWords(1);
+  const result = await addWords(2);
   console.log(result);
 });
 
